@@ -41,7 +41,6 @@
             background-color: #45a049;
         }
     </style>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
     <h2>Report Form</h2>
@@ -74,9 +73,6 @@
 
         // Replace 'building1' with the identifier for each location
         const locationUrl = baseUrl + '?location=building1';
-
-        // Generate QR code
-        new QRCode(document.getElementById('qrcode'), locationUrl);
     </script>
 </body>
 </html>
