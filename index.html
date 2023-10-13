@@ -41,6 +41,7 @@
             background-color: #45a049;
         }
     </style>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
     <h2>Report Form</h2>
@@ -68,19 +69,14 @@
     </form>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            
-            // Get the 'location' parameter from the URL
-            const locationParam = urlParams.get('location');
+        // Change this URL based on your deployment
+        const baseUrl = 'https://prathamsai.github.io/';
 
-            // Set the location field value
-            const locationField = document.getElementById('location');
-            if (locationParam) {
-                locationField.value = locationParam;
-            }
-        });
+        // Replace 'building1' with the identifier for each location
+        const locationUrl = baseUrl + '?location=building1';
+
+        // Generate QR code
+        new QRCode(document.getElementById('qrcode'), locationUrl);
     </script>
 </body>
 </html>
