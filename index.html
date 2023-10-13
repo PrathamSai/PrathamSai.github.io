@@ -69,13 +69,26 @@
     </form>
 
     <script>
-        // Change this URL based on your deployment
-        const baseUrl = 'https://prathamsai.github.io/';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Change this URL based on your deployment
+            const baseUrl = 'https://prathamsai.github.io/';
 
-        // Replace 'building1' with the identifier for each location
-        const locationUrl = baseUrl + '?location=building1';
+            // Replace 'building1' with the identifier for each location
+            const locationUrl = baseUrl + '?location=building1';
 
+            // Get the 'qrcode' element
+            const qrcodeElement = document.getElementById('qrcode');
+
+            // Check if the 'qrcode' element exists before creating the QR code
+            if (qrcodeElement) {
+                // Generate QR code
+                new QRCode(qrcodeElement, locationUrl);
+            } else {
+                console.error("Element with ID 'qrcode' not found.");
+            }
+        });
     </script>
+
 </body>
 </html>
 
