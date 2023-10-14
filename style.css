@@ -1,0 +1,61 @@
+form {
+    background-color: #fff !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    width: 300px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    text-align: center !important;
+}
+
+label
+{
+	display:block !important;
+	margin:10px 0 !important;
+	color:#555 !important;
+}
+button
+{
+	background-color:#C90 !important;
+	color:white !important;
+	padding:10px 15px !important;
+	border:none !important;
+	border-radius:4px !important;
+	cursor:pointer !important;
+}
+
+div
+{
+    font-family: 'Verdana', 'Poppins', sans-serif;
+
+}
+
+
+.imageWidget {
+    text-align: center;
+}
+
+.imageWidget img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+   
+}
+
+/* Style the location label */
+
+/* Style the location input */
+#location {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#location:focus {
+    outline: none;
+    border-color: #3498db; /* Change to your preferred focus color */
+}
