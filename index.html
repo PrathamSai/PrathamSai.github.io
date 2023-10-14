@@ -3,83 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Form</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
+    <title>Impressive Report Form</title>
+    <link rel="stylesheet" href="style.css">
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 8px;
-        }
-
-        input, select {
-            margin-bottom: 16px;
-            padding: 8px;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
-    <h2>Report Form</h2>
-    <p>Please fill out the form below to report an issue.</p>
+<div style="padding: 50px;">
+
+            <!-- *** ADD OR EDIT HTML INSIDE OF THE dmRespCol DIVS, SEE DOCUMENTATION FOR GUIDELINES *** -->
+    <div style="text-align: center; padding: 20px;">
+        <img src="https://irp.cdn-website.com/3ba3ff84/dms3rep/multi/Humber_Logo_Blue_and_Gold+%281%29.png" alt="" style="max-width: 400px; height: auto;">
+    </div>
     
-    <form id="reportForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <div style="text-align: center; font-size: 70%; padding-top: 10px;">
+       Welcome to
+    </div>
+    
+    <div style="text-align: center; font-size: 130%; padding:5px;">
+        Humber's Facility Reporting System
+    </div>
+    
+    <div style="text-align: center; font-size: 72%; ">
+        To report any concerns or issues, please use the form below:
+    </div>
+    
+    <div style="padding: 20px;">
+        <div style="text-align: center;  ">
+        <label for="location" style="display: block; font-size: 130%; margin-bottom: 8px; color: black;">Location:</label>
+        <input type="text" id="location" name="location" readonly style="width: 350px; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; transition: border-color 0.3s ease-in-out; text-align: center;">
+        </div>
+    
 
-        <label for="studentNumber">Student Number:</label>
-        <input type="text" id="studentNumber" name="studentNumber" required>
+        <div style="text-align: center; font-size: 130%; padding:10px;">
+            Please Select your issue:
+        </div>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" readonly>
+        <div style="text-align: center;">
+            <form id="1853824628" class="u_1853824628" action="" data-uialign="center">
+                <label>
+                    <input type="radio" name="issue" value="water_leakage">
+                    Water leakage
+                </label>
+                <label>
+                    <input type="radio" name="issue" value="floor_maintenance">
+                    Floor maintenance
+                </label>
+                <label>
+                    <input type="radio" name="issue" value="toilet_paper_availability">
+                    Toilet paper availability
+                </label>
+                <label>
+                    <input type="radio" name="issue" value="trash_disposal">
+                    Trash Disposal
+                </label>
+                <label>
+                    <input type="radio" name="issue" value="broken_fixtures">
+                    Broken Fixtures
+                </label>
+                <label>
+                    <input type="radio" name="issue" value="flood">
+                    Flood
+                </label>
+            </form>
+            <br>
+            <button> Submit </button>
+        </div>
+    </div>
+        
 
-        <label for="issueCategory">Issue Category:</label>
-        <select id="issueCategory" name="issueCategory" required>
-            <option value="" disabled selected>Select an option</option>
-            <option value="wifi">WiFi Issue</option>
-            <option value="facility">Facility Maintenance</option>
-            <option value="other">Other</option>
-        </select>
+    </div>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get the 'location' parameter from the URL
+        const locationParam = urlParams.get('location');
 
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            
-            // Get the 'location' parameter from the URL
-            const locationParam = urlParams.get('location');
-
-            // Set the location field value
-            const locationField = document.getElementById('location');
-            if (locationParam) {
-                locationField.value = locationParam;
-            }
-        });
-    </script>
+        // Set the location field value
+        const locationField = document.getElementById('location');
+        if (locationParam) {
+            locationField.value = locationParam;
+        }
+    });
+</script>
+   
 </body>
 </html>
