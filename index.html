@@ -57,32 +57,22 @@
     </form>
     <input type="submit" value="Submit">
 
-    <div style="position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #e8e8e8;
-    color: #000000;">
-        <p>&copy; 2023 Your Website Name. All Rights Reserved.</p>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-
-        // Get the 'location' parameter from the URL
-        const locationParam = urlParams.get('location');
-
-        // Set the location field value
-        const locationField = document.getElementById('location');
-        if (locationParam) {
-            locationField.value = locationParam;
-        }
-    });
-</script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+    
+            // Get the 'location' parameter from the URL
+            const locationParam = urlParams.get('location');
+    
+            // Set the location field value
+            const locationField = document.getElementById('location');
+            if (locationParam) {
+                locationField.value = locationParam;
+            }
+        });
+    </script>
     
 
 </body>
