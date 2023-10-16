@@ -66,6 +66,22 @@
     color: #000000;">
         <p>&copy; 2023 Your Website Name. All Rights Reserved.</p>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Get the 'location' parameter from the URL
+        const locationParam = urlParams.get('location');
+
+        // Set the location field value
+        const locationField = document.getElementById('location');
+        if (locationParam) {
+            locationField.value = locationParam;
+        }
+    });
+</script>
     
     
 
