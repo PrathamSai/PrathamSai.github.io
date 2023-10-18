@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Welcome to Firebase Hosting</title>
+
+    <script src="data.js"></script>
+    <!-- update the version number as needed -->
+<!-- <script defer src="/__/firebase/10.5.0/firebase-app-compat.js"></script>
+     include only the Firebase features as you need -->
+ <!--- //  <script defer src="/__/firebase/10.5.0/firebase-database-compat.js"></script>
+  //  <script defer src="/__/firebase/10.5.0/firebase-firestore-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-functions-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-messaging-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-storage-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-analytics-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-remote-config-compat.js"></script>
+   // <script defer src="/__/firebase/10.5.0/firebase-performance-compat.js"></script> -->
+   // <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+   <!-- <script defer src="/__/firebase/init.js?useEmulator=true"></script>-->
+
+  </head>
+  <body>
+
+
+    <div style="text-align: center;">
+      <img src="https://humber.ca/brand/sites/default/files/logos/Primary_Logo/Humber_Logo_Blue_and_Gold.png" alt=""style="max-width: 50%; height: auto; padding: 30px;">
+  </div>
+
+  <div>
+      <div style="font-size: 70%;  text-align: center; padding: 3px;">Welcome to</div>
+      <div style="font-size: 130%;  text-align: center;padding: 3px;">Humber's Facility Reporting System</div>
+      <div style="font-size: 72%; text-align: center; padding: 3px; margin-left: 30px; margin-right: 30px;">To report any concerns or issues, please use the form below:</div>
+  </div>
+
+          <label for="location" >Location:</label>
+          <input type="text" id="location" name="location" readonly >
+
+          <label for="email" style="text-align: center; padding-top: 20px;;" >Email:</label>
+          <input type="email" id="email" name="email" style="text-align: center;
+          width: 50%;
+          padding: 8px;
+          margin-left: 25%;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          background-color: #ffffff;
+          color: #333;
+          font-family: 'Raleway', sans-serif;" >
+
+  <div style="font-size: 130%; padding-top: 30px; text-align: center;">Please Select your issue:</div>
+
+
+  <form method="post">
+      <label>
+          <input type="radio" name="issue1" value="water_leakage">
+          Water Leakage
+      </label><br>
+  
+      <label>
+          <input type="radio" name="issue2" value="floor_maintenance">
+          Floor Maintenance
+      </label><br>
+  
+      <label>
+          <input type="radio" name="issue3" value="toilet_paper">
+          Toilet Paper Availability
+      </label><br>
+  
+      <label>
+          <input type="radio" name="issue4" value="trash_disposal">
+          Trash Disposal
+      </label><br>
+  
+      <label>
+          <input type="radio" name="issue5" value="broken_fixtures">
+          Broken Fixtures
+      </label><br>
+  
+      <label>
+          <input type="radio" name="issue6" value="flood">
+          Flood
+      </label>
+  </form>
+  <a href="Thanks.html">
+  <input type="submit" value="Submit">
+  </a>
+  
+
+    <script>
+    //  document.addEventListener('DOMContentLoaded', function() {
+      //  const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        //firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+       // try {
+       //   let app = firebase.app();
+       //   let features = [
+       //     'auth', 
+       //     'database', 
+       //     'firestore',
+       //     'functions',
+       //     'messaging', 
+        //    'storage', 
+        //    'analytics', 
+        //    'remoteConfig',
+        //    'performance',
+        //  ].filter(feature => typeof app[feature] === 'function');
+       //   loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+       // } catch (e) {
+        //  console.error(e);
+        //  loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+       // }
+     // });
+    </script>
+  </body>
+</html>
