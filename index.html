@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Welcome to Firebase Hosting</title>
-  <script src="data.js"></script>
+  <title>HUMBER REPORTING</title>
+
 </head>
 <body>
   <div style="text-align: center;">
@@ -21,12 +21,9 @@
   <label for="location">Location:</label>
   <input type="text" id="location" readonly>
 
-  <label for="date_time" style="text-align: center; padding-top: 10px;">Date & Time:</label>
-  <input type="text" id="date_time" readonly>
-
   <div style="font-size: 130%; padding-top: 30px; text-align: center;">Please Select your issue:</div>
 
-  <form method="post">
+  <form>
     <label>
       <input type="radio" id="issue1" value="water_leakage">
       Water Leakage
@@ -57,10 +54,10 @@
       Flood
     </label>
   </form>
-  <a href="Thanks.html">
-    <button id="submit" onclick="InsertData()">Submit</button>
-  </a>
 
+  <a href="Thanks.html">
+  <button id="submit" >Submit</button>
+  </a>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
@@ -79,28 +76,31 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
-    const DB = getDatabase();
-    var location = document.getElementById("location");
-    var issue = document.getElementById("issue");
-    var date_time = document.getElementById("date_time"); // Added date_time field
+    const db = getDatabase();
+    let location = document.getElementById("location");
+    // let issue = document.querySelector('input[name="issue"]:checked');
 
     // Inserting data
     function InsertData() {
       const currentDate = new Date();
 
-      set(ref(DB, "TheUsers/"), {
+      set(ref(db, "TheUsers/" + location.value), {
         Location: location.value,
-        Issues: issue.value,
+        Issues: document.querySelector('input[name="issue"]:checked'),
         Date: currentDate.toLocaleDateString(),
         Time: currentDate.toLocaleTimeString()
       })
-        .then(() => {
-          alert("Data stored successfully");
-        })
-        .catch((error) => {
-          alert("Unsuccessful, error");
-        });
+      .then(() => {
+        alert("Data stored successfully");
+      })
+      .catch((error) => {
+        alert("Unsuccessful, error");
+      });
     }
+
+    // Event listener for submit button
+    document.getElementById("submit").addEventListener('click', InsertData);
+
   </script>
 
   <script>
@@ -116,6 +116,9 @@
       if (locationParam) {
         locationField.value = locationParam;
       }
+
+      
+      
     });
   </script>
 </body>
