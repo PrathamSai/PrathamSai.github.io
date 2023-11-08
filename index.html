@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,18 @@
   <title>HUMBER REPORTING</title>
 
 </head>
+
 <body>
   <div style="text-align: center;">
-    <img src="https://humber.ca/brand/sites/default/files/logos/Primary_Logo/Humber_Logo_Blue_and_Gold.png" alt="" style="max-width: 50%; height: auto; padding: 30px;">
+    <img src="https://humber.ca/brand/sites/default/files/logos/Primary_Logo/Humber_Logo_Blue_and_Gold.png" alt=""
+      style="max-width: 50%; height: auto; padding: 30px;">
   </div>
 
   <div>
     <div style="font-size: 70%; text-align: center; padding: 3px;">Welcome to</div>
     <div style="font-size: 130%; text-align: center; padding: 3px;">Humber Facilities Reporting Platform</div>
-    <div style="font-size: 72%; text-align: center; padding: 3px; margin-left: 30px; margin-right: 30px;">To report any concerns or issues, please use the form below:</div>
+    <div style="font-size: 72%; text-align: center; padding: 3px; margin-left: 30px; margin-right: 30px;">To report
+      any concerns or issues, please use the form below:</div>
   </div>
 
   <label for="location">Location:</label>
@@ -55,13 +59,19 @@
     </label>
   </form>
 
-  
-  <button id="submit" >Submit</button>
-  
+
+  <button id="submit">Submit</button>
+
   <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      set
+    } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -78,31 +88,86 @@
 
     const db = getDatabase();
     let location = document.getElementById("location");
-    // let issue = document.querySelector('input[name="issue"]:checked');
 
     // Inserting data
     function InsertData() {
       const currentDate = new Date();
 
       set(ref(db, "TheUsers/" + location.value), {
-        Location: location.value,
-        Issues: document.querySelector('input[name="issue"]:checked'),
-        Date: currentDate.toLocaleDateString(),
-        Time: currentDate.toLocaleTimeString()
-      })
-      .then(() => {
-        alert("Data stored successfully");
-        window.location.href = 'Thanks.html'
-      })
-      .catch((error) => {
-        alert("Unsuccessful, error");
-      });
+          Location: location.value,
+          Issues: document.querySelector('input[name="issue"]:checked'),
+          Date: currentDate.toLocaleDateString(),
+          Time: currentDate.toLocaleTimeString()
+        })
+        .then(() => {
+          alert("Data stored successfully")
+          window.location.href = 'Thanks.html'
+        })
+        
+        .catch((error) => {
+          alert("Unsuccessful, error");
+        });
     }
 
     // Event listener for submit button
     document.getElementById("submit").addEventListener('click', InsertData);
 
   </script>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init("VVZb-gICiZv0KzAzC");
+</script>
+
+<script type="text/javascript">
+
+  function sendEmailNotification(location, issues, date, time) {
+    var templateParams = {
+      location: location,
+      issues: issues,
+      date: date,
+      time: time
+    };
+
+    emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
+      .then(function (response) {
+        console.log("Email sent successfully", response);
+        window.location.href = 'Thanks.html';
+      })
+      .catch(function (error) {
+        console.error("Error sending email", error);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get the 'location' parameter from the URL
+    const locationParam = urlParams.get('location');
+
+    // Set the location field value
+    const locationField = document.getElementById('location');
+    if (locationParam) {
+      locationField.value = locationParam;
+    }
+  });
+
+  document.getElementById("submit").addEventListener('click', function () {
+    const currentDate = new Date();
+    const selectedIssue = document.querySelector('input[name="issue"]:checked');
+    const location = document.getElementById("location");
+
+    sendEmailNotification(
+      location.value,
+      selectedIssue ? selectedIssue.value : "",
+      currentDate.toLocaleDateString(),
+      currentDate.toLocaleTimeString()
+    );
+  });
+
+</script>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -118,9 +183,8 @@
         locationField.value = locationParam;
       }
 
-      
-      
     });
   </script>
 </body>
+
 </html>
