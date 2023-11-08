@@ -29,32 +29,32 @@
 
   <form>
     <label>
-      <input type="radio" id="issue1" value="water_leakage">
+      <input type="checkbox" name="issue" id="issue1" value="water_leakage">
       Water Leakage
     </label><br>
 
     <label>
-      <input type="radio" id="issue2" value="floor_maintenance">
+      <input type="checkbox" name="issue" id="issue2" value="floor_maintenance">
       Floor Maintenance
     </label><br>
 
     <label>
-      <input type="radio" id="issue3" value="toilet_paper">
+      <input type="checkbox" name="issue" id="issue3" value="toilet_paper">
       Toilet Paper Availability
     </label><br>
 
     <label>
-      <input type="radio" id="issue4" value="trash_disposal">
+      <input type="checkbox" name="issue" id="issue4" value="trash_disposal">
       Trash Disposal
     </label><br>
 
     <label>
-      <input type="radio" id="issue5" value="broken_fixtures">
+      <input type="checkbox" name="issue" id="issue5" value="broken_fixtures">
       Broken Fixtures
     </label><br>
 
     <label>
-      <input type="radio" id="issue6" value="flood">
+      <input type="checkbox" name="issue" id="issue6" value="flood">
       Flood
     </label>
   </form>
@@ -93,17 +93,22 @@
     function InsertData() {
       const currentDate = new Date();
 
+     const selectedIssues = Array.from(document.querySelectorAll('input[name="issue"]:checked'));
+
+    // Extract the values of selected issues into an array
+    const issuesArray = selectedIssues.map(issue => issue.value);
+
       set(ref(db, "TheUsers/" + location.value), {
-          Location: location.value,
-          Issues: document.querySelector('input[name="issue"]:checked'),
-          Date: currentDate.toLocaleDateString(),
-          Time: currentDate.toLocaleTimeString()
-        })
+        Location: location.value,
+        Issues: issuesArray,
+        Date: currentDate.toLocaleDateString(),
+        Time: currentDate.toLocaleTimeString()
+      })
         .then(() => {
           alert("Data stored successfully")
           window.location.href = 'Thanks.html'
         })
-        
+
         .catch((error) => {
           alert("Unsuccessful, error");
         });
@@ -114,59 +119,54 @@
 
   </script>
 
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-  emailjs.init("VVZb-gICiZv0KzAzC");
-</script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init("VVZb-gICiZv0KzAzC");
+  </script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  function sendEmailNotification(location, issues, date, time) {
-    var templateParams = {
-      location: location,
-      issues: issues,
-      date: date,
-      time: time
-    };
+    function sendEmailNotification(location, issues, date, time) {
+      var templateParams = {
+        location: location,
+        issues: issues,
+        date: date,
+        time: time
+      };
 
-    emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
-      .then(function (response) {
-        console.log("Email sent successfully", response);
-        window.location.href = 'Thanks.html';
-      })
-      .catch(function (error) {
-        console.error("Error sending email", error);
-      });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Get the 'location' parameter from the URL
-    const locationParam = urlParams.get('location');
-
-    // Set the location field value
-    const locationField = document.getElementById('location');
-    if (locationParam) {
-      locationField.value = locationParam;
+      emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
+        .then(function (response) {
+          console.log("Email sent successfully", response);
+          window.location.href = 'Thanks.html';
+        })
+        .catch(function (error) {
+          console.error("Error sending email", error);
+        });
     }
-  });
 
-  document.getElementById("submit").addEventListener('click', function () {
-    const currentDate = new Date();
-    const selectedIssue = document.querySelector('input[name="issue"]:checked');
-    const location = document.getElementById("location");
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
 
-    sendEmailNotification(
-      location.value,
-      selectedIssue ? selectedIssue.value : "",
-      currentDate.toLocaleDateString(),
-      currentDate.toLocaleTimeString()
-    );
-  });
+      // Get the 'location' parameter from the URL
+      const locationParam = urlParams.get('location');
 
-</script>
+      // Set the location field value
+      const locationField = document.getElementById('location');
+      if (locationParam) {
+        locationField.value = locationParam;
+      }
+    });
+
+    document.getElementById("submit").addEventListener('click', function () {
+      const currentDate = new Date();
+      const selectedIssue = document.querySelector('input[name="issue"]:checked');
+      const location = document.getElementById("location");
+
+
+    });
+
+  </script>
 
 
   <script>
