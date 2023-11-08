@@ -119,54 +119,67 @@
 
   </script>
 
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script type="text/javascript">
-    emailjs.init("VVZb-gICiZv0KzAzC");
-  </script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
 
-  <script type="text/javascript">
+const publickey = "VVZb-gICiZv0KzAzC";
+  const serviceID = "service_jyp42w3";
+  const tempID = "template_i59xyfi";
 
-    function sendEmailNotification(location, issues, date, time) {
-      var templateParams = {
-        location: location,
-        issues: issues,
-        date: date,
-        time: time
-      };
+  emailjs.init("VVZb-gICiZv0KzAzC");
 
-      emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
-        .then(function (response) {
-          console.log("Email sent successfully", response);
-          window.location.href = 'Thanks.html';
-        })
-        .catch(function (error) {
-          console.error("Error sending email", error);
-        });
+</script>
+
+<script type="text/javascript">
+
+  function sendEmailNotification(location, issues, date, time) {
+    var templateParams = {
+      location: location,
+      issues: issues,
+      date: date,
+      time: time
+    };
+
+    emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
+      .then(function (response) {
+        console.log("Email sent successfully", response);
+      }, function (error) {
+        console.error("Error sending email", error);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get the 'location' parameter from the URL
+    const locationParam = urlParams.get('location');
+
+    // Set the location field value
+    const locationField = document.getElementById('location');
+    if (locationParam) {
+      locationField.value = locationParam;
     }
+  });
 
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get the URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
 
-      // Get the 'location' parameter from the URL
-      const locationParam = urlParams.get('location');
+    // Get the 'location' parameter from the URL
+    const locationParam = urlParams.get('location');
 
-      // Set the location field value
-      const locationField = document.getElementById('location');
-      if (locationParam) {
-        locationField.value = locationParam;
-      }
-    });
-
-    document.getElementById("submit").addEventListener('click', function () {
-      const currentDate = new Date();
-      const selectedIssue = document.querySelector('input[name="issue"]:checked');
-      const location = document.getElementById("location");
-
-
-    });
+    // Set the location field value
+    const locationField = document.getElementById('location');
+    if (locationParam) {
+      locationField.value = locationParam;
+    }
+  });
 
   </script>
+
+
+
 
 
   <script>
