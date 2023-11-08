@@ -76,6 +76,17 @@ input[type="text"] {
     color: #000000;
 }
 
+button {
+    display: block;
+    margin: 0 auto;
+    background-color: #C90;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
 
     
 
