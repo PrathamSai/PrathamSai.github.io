@@ -1,96 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Humber Facilities Reporting Platform</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Welcome to Firebase Hosting</title>
-
-    <script src="data.js"></script>
-    <!-- update the version number as needed -->
-<!-- <script defer src="/__/firebase/10.5.0/firebase-app-compat.js"></script>
-     include only the Firebase features as you need -->
- <!--- //  <script defer src="/__/firebase/10.5.0/firebase-database-compat.js"></script>
-  //  <script defer src="/__/firebase/10.5.0/firebase-firestore-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-functions-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-messaging-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-storage-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-analytics-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-remote-config-compat.js"></script>
-   // <script defer src="/__/firebase/10.5.0/firebase-performance-compat.js"></script> -->
-   // <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-   <!-- <script defer src="/__/firebase/init.js?useEmulator=true"></script>-->
-
-  </head>
-  <body>
-
-
+</head>
+<body>
     <div style="text-align: center;">
-      <img src="https://humber.ca/brand/sites/default/files/logos/Primary_Logo/Humber_Logo_Blue_and_Gold.png" alt=""style="max-width: 50%; height: auto; padding: 30px;">
-  </div>
+        <img src="https://humber.ca/brand/sites/default/files/logos/Primary_Logo/Humber_Logo_Blue_and_Gold.png" alt="" style="max-width: 50%; height: auto; padding: 30px;">
+    </div>
 
-  <div>
-      <div style="font-size: 70%;  text-align: center; padding: 3px;">Welcome to</div>
-      <div style="font-size: 130%;  text-align: center;padding: 3px;">Humber Facilities Reporting Platform</div>
-      <div style="font-size: 72%; text-align: center; padding: 3px; margin-left: 30px; margin-right: 30px;">To report any concerns or issues, please use the form below:</div>
-  </div>
+    <div>
+        <div style="font-size: 70%;  text-align: center; padding: 3px;">Welcome to</div>
+        <div style="font-size: 130%;  text-align: center;padding: 3px;">Humber Facilities Reporting Platform</div>
+        <div style="font-size: 72%; text-align: center; padding: 3px; margin-left: 30px; margin-right: 30px;">To report any concerns or issues, please use the form below:</div>
+    </div>
 
-          <label for="location" >Location:</label>
-          <input type="text" id="location" name="location" readonly >
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" readonly>
 
-<!--          <label for="email" style="text-align: center; padding-top: 20px;;" >Email:</label>
-          <input type="email" id="email" name="email" style="text-align: center;
-          width: 50%;
-          padding: 8px;
-          margin-left: 25%;
-          box-sizing: border-box;
-          border: 1px solid #ccc;
-          border-radius: 3px;
-          background-color: #ffffff;
-          color: #333;
-          font-family: 'Raleway', sans-serif;" > -->
+    <div style="font-size: 130%; padding-top: 30px; text-align: center;">Please Select your issue:</div>
 
-  <div style="font-size: 130%; padding-top: 30px; text-align: center;">Please Select your issue:</div>
+    <form method="post">
+        <label>
+            <input type="radio" name="issue" value="water_leakage">
+            Water Leakage
+        </label><br>
 
+        <label>
+            <input type="radio" name="issue" value="floor_maintenance">
+            Floor Maintenance
+        </label><br>
 
-  <form method="post">
-      <label>
-          <input type="radio" name="issue1" value="water_leakage">
-          Water Leakage
-      </label><br>
-  
-      <label>
-          <input type="radio" name="issue2" value="floor_maintenance">
-          Floor Maintenance
-      </label><br>
-  
-      <label>
-          <input type="radio" name="issue3" value="toilet_paper">
-          Toilet Paper Availability
-      </label><br>
-  
-      <label>
-          <input type="radio" name="issue4" value="trash_disposal">
-          Trash Disposal
-      </label><br>
-  
-      <label>
-          <input type="radio" name="issue5" value="broken_fixtures">
-          Broken Fixtures
-      </label><br>
-  
-      <label>
-          <input type="radio" name="issue6" value="flood">
-          Flood
-      </label>
-  </form>
-  <a href="Thanks.html">
-  <input type="submit" value="Submit">
-  </a>
+        <label>
+            <input type="radio" name="issue" value="toilet_paper">
+            Toilet Paper Availability
+        </label><br>
 
-  
-  </body>
+        <label>
+            <input type="radio" name="issue" value="trash_disposal">
+            Trash Disposal
+        </label><br>
+
+        <label>
+            <input type="radio" name="issue" value="broken_fixtures">
+            Broken Fixtures
+        </label><br>
+
+        <label>
+            <input type="radio" name="issue" value="flood">
+            Flood
+        </label>
+    </form>
+
+    <button id="submit">Submit</button>
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js"></script>
+    
+    <script src="index.js" type="module"></script>
+</body>
 </html>
