@@ -60,124 +60,61 @@
   </form>
 
 
-  <button id="submit">Submit</button>
+  <button id="submit" onclick="sendmail()">Submit</button>
 
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      set
-    } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyARmEBLG6omQU294h_EglLxFCkCaI6PHy8",
-      authDomain: "techproject-3b4ee.firebaseapp.com",
-      projectId: "techproject-3b4ee",
-      storageBucket: "techproject-3b4ee.appspot.com",
-      messagingSenderId: "691672327983",
-      appId: "1:691672327983:web:c38a3ad9d900c5747123da"
-    };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
 
-    const db = getDatabase();
-    let location = document.getElementById("location");
 
-    // Inserting data
-    function InsertData() {
-      const currentDate = new Date();
 
-     const selectedIssues = Array.from(document.querySelectorAll('input[name="issue"]:checked'));
 
-    // Extract the values of selected issues into an array
-    const issuesArray = selectedIssues.map(issue => issue.value);
 
-      set(ref(db, "TheUsers/" + location.value), {
-        Location: location.value,
-        Issues: issuesArray,
-        Date: currentDate.toLocaleDateString(),
-        Time: currentDate.toLocaleTimeString()
-      })
-        .then(() => {
-          alert("Data stored successfully")
-          window.location.href = 'Thanks.html'
-        })
-
-        .catch((error) => {
-          alert("Unsuccessful, error");
-        });
-    }
-
-    // Event listener for submit button
-    document.getElementById("submit").addEventListener('click', InsertData);
-
-  </script>
-
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<!-- EMAIL-->
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
 <script type="text/javascript">
-
-const publickey = "VVZb-gICiZv0KzAzC";
-  const serviceID = "service_jyp42w3";
-  const tempID = "template_i59xyfi";
-
-  emailjs.init("VVZb-gICiZv0KzAzC");
-
+   (function(){
+      emailjs.init("VVZb-gICiZv0KzAzC");
+   })();
 </script>
 
-<script type="text/javascript">
+<script>
+  const selectedIssues = Array.from(document.querySelectorAll('input[name="issue"]:checked'));
 
-  function sendEmailNotification(location, issues, date, time) {
-    var templateParams = {
-      location: location,
-      issues: issues,
-      date: date,
-      time: time
-    };
+  // Extract the values of selected issues into an array
+  const issuesArray = selectedIssues.map(issue => issue.value);
 
-    emailjs.send("service_jyp42w3", "template_i59xyfi", templateParams)
-      .then(function (response) {
-        console.log("Email sent successfully", response);
-      }, function (error) {
-        console.error("Error sending email", error);
-      });
+  function sendmail(){
+    const currentDate = new Date();
+    var params = {
+      location : document.getElementById("location").value,
+      issues: issuesArray,
+      date: currentDate.toLocaleDateString(),
+      time: currentDate.toLocaleTimeString(),
+    }
+    const service_ID = "service_jyp42w3";
+  const template_ID = "template_i59xyfi";
+
+  emailjs.send(service_ID,template_ID,params)
+    .then(
+      res=> {
+        document.getElementById("location").value= "";
+        issuesArray;
+        currentDate.toLocaleDateString();
+        currentDate.toLocaleTimeString();
+        console.log(res);
+        alert("Email sent successfully");
+        window.location.href = 'Thanks.html'
+      })
+      .catch((err) => console.log(err));
+      
   }
+  
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Get the 'location' parameter from the URL
-    const locationParam = urlParams.get('location');
-
-    // Set the location field value
-    const locationField = document.getElementById('location');
-    if (locationParam) {
-      locationField.value = locationParam;
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Get the 'location' parameter from the URL
-    const locationParam = urlParams.get('location');
-
-    // Set the location field value
-    const locationField = document.getElementById('location');
-    if (locationParam) {
-      locationField.value = locationParam;
-    }
-  });
 
   </script>
-
+<!-- EMAIL END-->
 
 
 
