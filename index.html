@@ -29,32 +29,32 @@
 
   <form>
     <label>
-      <input type="checkbox" name="issue" id="issue1" value="water_leakage">
+      <input type="checkbox" name="issue" id="issue1" value="Water leakage">
       Water Leakage
     </label><br>
 
     <label>
-      <input type="checkbox" name="issue" id="issue2" value="floor_maintenance">
+      <input type="checkbox" name="issue" id="issue2" value=" Floor maintenance">
       Floor Maintenance
     </label><br>
 
     <label>
-      <input type="checkbox" name="issue" id="issue3" value="toilet_paper">
+      <input type="checkbox" name="issue" id="issue3" value=" Toilet paper">
       Toilet Paper Availability
     </label><br>
 
     <label>
-      <input type="checkbox" name="issue" id="issue4" value="trash_disposal">
+      <input type="checkbox" name="issue" id="issue4" value=" Trash disposal">
       Trash Disposal
     </label><br>
 
     <label>
-      <input type="checkbox" name="issue" id="issue5" value="broken_fixtures">
+      <input type="checkbox" name="issue" id="issue5" value=" Broken fixtures">
       Broken Fixtures
     </label><br>
 
     <label>
-      <input type="checkbox" name="issue" id="issue6" value="flood">
+      <input type="checkbox" name="issue" id="issue6" value=" Flood">
       Flood
     </label>
   </form>
@@ -80,12 +80,15 @@
 </script>
 
 <script>
-  const selectedIssues = Array.from(document.querySelectorAll('input[name="issue"]:checked'));
-
-  // Extract the values of selected issues into an array
-  const issuesArray = selectedIssues.map(issue => issue.value);
+  
 
   function sendmail(){
+
+    const selectedIssues = Array.from(document.querySelectorAll('input[name="issue"]:checked'));
+
+   // Extract the values of selected issues into an array
+    const issuesArray = selectedIssues.map(issue => issue.value);
+
     const currentDate = new Date();
     var params = {
       location : document.getElementById("location").value,
